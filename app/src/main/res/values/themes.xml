@@ -1,0 +1,17 @@
+<resources>
+
+    <style
+        name="Base.Theme.FoodD"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/primary</item>
+
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <item name="android:windowBackground">@color/background_light</item>
+
+        <item name="colorSurface">@color/surface_light</item>
+
+    </style>
+
+</resources>

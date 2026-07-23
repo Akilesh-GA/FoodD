@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange">#FF9400</color>
+    <color name="light_grey">#E6E6E6</color>
+    <color name="dark_grey">#0D0D0D</color>
+    <color name="mid_grey">#ADADAD</color>
+
+    <!-- app theme -->
+
+    <color name="primary">#FF7A00</color>
+    <color name="primary_dark">#E66900</color>
+
+    <color name="background_light">#FFFFFF</color>
+    <color name="surface_light">#FFF8F2</color>
+
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+
+    <color name="text_light">#212121</color>
+    <color name="text_dark">#FFFFFF</color>
+</resources>
