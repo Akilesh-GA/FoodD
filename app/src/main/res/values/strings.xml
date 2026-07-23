@@ -1,21 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!--  app text  -->
+    <!-- Application -->
     <string name="app_name">FoodD</string>
-    <string name="drawer_logo">drawer logo</string>
+
+    <!-- Navigation -->
+    <string name="drawer_logo">Drawer logo</string>
+
+    <!-- Delivery -->
     <string name="deliver_to">DELIVER TO</string>
     <string name="location">Halal Lab office</string>
+
+    <!-- Greetings -->
     <string name="greeting_text">Hey Halal, Good Afternoon!</string>
+
+    <!-- Search -->
     <string name="search_bar_hint">Search dishes, restaurants</string>
+
+    <!-- Categories -->
     <string name="categories">All Categories</string>
     <string name="see_all">See All</string>
-    <string name="restaurant_name">Rose Garden Restaurant</string>
-    <string name="restaurant_menu">Burger - Chicken - Riche - Wings</string>
-    <string name="img_content_desc">restaurant_image</string>
 
-<!--  icons  -->
+    <!-- Restaurant -->
+    <string name="restaurant_name">Rose Garden Restaurant</string>
+    <string name="restaurant_menu">Burger - Chicken - Rice - Wings</string>
+
+    <!-- Image -->
+    <string name="img_content_desc">Restaurant image</string>
+
+    <!-- Restaurant Details -->
     <string name="rating">4.7</string>
     <string name="delivery_charge">Free</string>
     <string name="time">20 min</string>
+
+    <!-- Food Card -->
+    <string name="food_content_desc">food_item_image</string>
+    <string name="food_name">Food Name</string>
 
 </resources>

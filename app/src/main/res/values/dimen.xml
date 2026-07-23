@@ -1,24 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Margins -->
     <dimen name="margin_top">40dp</dimen>
     <dimen name="margin_top_60">60dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_start_25">25dp</dimen>
+
     <dimen name="icon_margin_start">20dp</dimen>
     <dimen name="icon_margin_end">20dp</dimen>
     <dimen name="text_margin_start">40dp</dimen>
-    <dimen name="text_size_15">15sp</dimen>
-    <dimen name="layout_padding_10">10sp</dimen>
-    <dimen name="layout_padding_20">20dp</dimen>
-    <dimen name="text_size_20">20sp</dimen>
-    <dimen name="greeting_ts">18dp</dimen>
+
     <dimen name="margin_start_search">30dp</dimen>
     <dimen name="margin_end_search">30dp</dimen>
-    <dimen name="search_height">50dp</dimen>
-    <dimen name="margin_10">10dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="layout_padding_10">10dp</dimen>
+    <dimen name="layout_padding_20">20dp</dimen>
+    <dimen name="layout_padding_15">15dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="greeting_ts">18sp</dimen>
+
+    <!-- Widths -->
     <dimen name="width_0">0dp</dimen>
-    <dimen name="card_height">275dp</dimen>
-    <dimen name="icon_width">20dp</dimen>
-    <dimen name="icon_height">20dp</dimen>
-    <dimen name="margin_start_25">25dp</dimen>
     <dimen name="width_25">25dp</dimen>
+    <dimen name="icon_width">20dp</dimen>
+
+    <!-- Heights -->
+    <dimen name="search_height">50dp</dimen>
+    <dimen name="card_height">275dp</dimen>
     <dimen name="height_25">25dp</dimen>
+    <dimen name="icon_height">20dp</dimen>
+
+    <!-- Recycler View - Food -->
+    <dimen name="recycler_view_height">85dp</dimen>
+    <dimen name="food_padding_start">20dp</dimen>
+    <dimen name="food_padding_end">15dp</dimen>
+    <dimen name="food_padding_top">20dp</dimen>
+    <dimen name="food_padding_bottom">15dp</dimen>
+
+    <!-- Recycler View - Restaurant -->
+    <dimen name="recycler_food_height">0dp</dimen>
+    <dimen name="restaurant_padding_start">20dp</dimen>
+    <dimen name="restaurant_padding_end">20dp</dimen>
+    <dimen name="restaurant_padding_top">15dp</dimen>
+    <dimen name="restaurant_padding_bottom">20dp</dimen>
+
+    <!--  Food Card  -->
+    <dimen name="width_50">50dp</dimen>
+    <dimen name="height_50">50dp</dimen>
+
 </resources>

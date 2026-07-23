@@ -1,5 +1,6 @@
 package com.example.foodd;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
     private List<RestaurantEntity> restaurants;
+    private List<RestaurantEntity> restaurantsFull;
 
     public RestaurantAdapter(List<RestaurantEntity> restaurants) {
-        this.restaurants = restaurants;
+        this.restaurants = new ArrayList<>(restaurants);
+        this.restaurantsFull = new ArrayList<>(restaurants);
     }
 
     @NonNull
@@ -39,9 +43,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         holder.deliveryCharge.setText(restaurant.getDeliveryCharge());
         holder.time.setText(restaurant.getTime());
 
-        holder.ratingIcon.setImageResource(R.drawable.star);
-        holder.deliveryIcon.setImageResource(R.drawable.truck);
-        holder.timeIcon.setImageResource(R.drawable.clock);
+        holder.ratingIcon.setImageResource(restaurant.getRatingIcon());
+        holder.deliveryIcon.setImageResource(restaurant.getDeliveryIcon());
+        holder.timeIcon.setImageResource(restaurant.getTimeIcon());
     }
 
     @Override
@@ -49,6 +53,24 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         return restaurants.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void filterList(String text) {
+
+        restaurants.clear();
+
+        if(text.isEmpty()) {
+            restaurants.addAll(restaurantsFull);
+        } else {
+            text = text.trim().toLowerCase();
+            for(RestaurantEntity restaurant : restaurantsFull) {
+                if(restaurant.getRestaurantName().toLowerCase().contains(text)
+                        || restaurant.getRestaurantMenu().toLowerCase().contains(text)) {
+                    restaurants.add(restaurant);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 
     public static class RestaurantViewHolder extends RecyclerView.ViewHolder {
         ImageView restaurantImage, ratingIcon, deliveryIcon, timeIcon;

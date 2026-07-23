@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_food_layout"
     android:layout_width="wrap_content"
     android:layout_height="50dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/food_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/width_50"
+        android:layout_height="@dimen/height_50"
         app:srcCompat="@drawable/food_8"
-        android:contentDescription="food_item_image"
+        android:contentDescription="@string/food_content_desc"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:shapeAppearanceOverlay="@style/rounded_food_image"
-        tools:ignore="MissingConstraints"/>
+        app:shapeAppearanceOverlay="@style/rounded_food_image" />
 
     <TextView
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hot Dog"
+        android:text="@string/food_name"
         android:fontFamily="@font/open_sans_regular"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/food_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="15dp"/>
+        android:layout_margin="@dimen/margin_15"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
