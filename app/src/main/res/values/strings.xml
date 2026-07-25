@@ -37,4 +37,7 @@
     <string name="food_content_desc">food_item_image</string>
     <string name="food_name">Food Name</string>
 
+    <!-- Drawer -->
+    <string name="drawer_head">Drawer Head</string>
+    <string name="drawer_body">Drawer Body</string>
 </resources>

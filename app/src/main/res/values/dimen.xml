@@ -6,6 +6,8 @@
     <dimen name="margin_top_80">80dp</dimen>
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
     <dimen name="margin_start_25">25dp</dimen>
 
     <dimen name="icon_margin_start">20dp</dimen>
@@ -19,6 +21,8 @@
     <dimen name="layout_padding_10">10dp</dimen>
     <dimen name="layout_padding_20">20dp</dimen>
     <dimen name="layout_padding_15">15dp</dimen>
+    <dimen name="padding_top_80">80dp</dimen>
+    <dimen name="padding_bottom_80">80dp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="text_size_15">15sp</dimen>
@@ -53,5 +57,8 @@
     <!--  Food Card  -->
     <dimen name="width_50">50dp</dimen>
     <dimen name="height_50">50dp</dimen>
+
+    <!-- Drawer -->
+    <dimen name="drawer_radius">45dp</dimen>
 
 </resources>

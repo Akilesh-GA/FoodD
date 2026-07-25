@@ -7,11 +7,14 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,16 +33,31 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView foodRecyclerView;
     RecyclerView recyclerView;
     SearchView searchView;
+    ImageView drawerIcon;
+    ImageView closeIcon;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_layout);
+        setContentView(R.layout.drawer_layout);
 
         foodRecyclerView = findViewById(R.id.food_recycler_view);
         recyclerView = findViewById(R.id.restaurant_recycler_view);
         searchView = findViewById(R.id.search_view);
         greetingTextView = findViewById(R.id.greeting_text);
+        drawerIcon = findViewById(R.id.drawer_icon);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        closeIcon = findViewById(R.id.close_icon);
+
+        drawerIcon.setOnClickListener(view -> {
+            drawerLayout.openDrawer(GravityCompat.START);
+        });
+
+        closeIcon.setOnClickListener(view -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        });
+
 
         greetingText = greetingTextView.getText().toString().trim();
 
