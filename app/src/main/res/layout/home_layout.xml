@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/greeting_search_layout"
-        android:layout_marginTop="@dimen/margin_top_60">
+        android:layout_marginTop="@dimen/margin_top_80">
 
     <ImageView
         android:id="@+id/drawer_icon"
@@ -92,15 +92,15 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
-            android:layout_height="@dimen/search_height"
             android:layout_width="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/greeting_text"
-            app:layout_constraintBottom_toTopOf="@+id/category"
+            android:layout_height="@dimen/search_height"
             android:queryHint="@string/search_bar_hint"
             android:iconifiedByDefault="false"
             android:background="@drawable/search_bar_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/greeting_text"
+            app:layout_constraintBottom_toTopOf="@id/category"
             android:layout_marginTop="@dimen/margin_10"/>
 
         <TextView

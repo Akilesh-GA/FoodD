@@ -3,6 +3,7 @@
     <!-- Margins -->
     <dimen name="margin_top">40dp</dimen>
     <dimen name="margin_top_60">60dp</dimen>
+    <dimen name="margin_top_80">80dp</dimen>
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_15">15dp</dimen>
     <dimen name="margin_start_25">25dp</dimen>
