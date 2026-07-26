@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/top_splash_item"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/splash_item_one"
+        android:translationX="-90dp"
+        android:translationY="-90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/splash_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/app_logo"
+        app:shapeAppearance="@style/drawer_image_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/splash_progressbar"/>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/splash_progressbar"
+        android:layout_width="250dp"
+        android:layout_height="8dp"
+        android:max="100"
+        android:progress="100"
+        app:indicatorColor="@color/orange"
+        app:layout_constraintStart_toStartOf="@id/splash_image"
+        app:layout_constraintEnd_toEndOf="@id/splash_image"
+        app:layout_constraintTop_toBottomOf="@id/splash_image"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/bottom_splash_item"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/splash_item_one"
+        android:translationX="90dp"
+        android:translationY="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

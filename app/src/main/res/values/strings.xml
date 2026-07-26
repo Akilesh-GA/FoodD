@@ -38,6 +38,19 @@
     <string name="food_name">Food Name</string>
 
     <!-- Drawer -->
-    <string name="drawer_head">Drawer Head</string>
-    <string name="drawer_body">Drawer Body</string>
+    <string name="drawer_head">FoodD Welcomes you!</string>
+    <string name="drawer_body">Today Meal Plan?</string>
+
+    <!-- Splash Text -->
+    <string name="splash_text_one">Start Your Food Journey with FoodD!</string>
+    <string name="splash_text_two">Hungry? We\'ve Got You!</string>
+    <string name="splash_text_three">Discover Great Flavors!</string>
+    <string name="splash_text_four">Fast Delivery, Fresh Taste!</string>
+    <string name="splash_text_five">Let\'s Satisfy Your Cravings!</string>
+
+    <!-- Social Icons -->
+    <string name="google">google</string>
+    <string name="facebook">facebook</string>
+    <string name="X">X</string>
+    <string name="linkedin">linkedin</string>
 </resources>

@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigation_drawer"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/drawer_layout_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@drawable/drawer_bg"
@@ -19,10 +19,13 @@
             android:id="@+id/drawer_logo"
             app:srcCompat="@drawable/app_logo"
             android:layout_marginTop="@dimen/margin_50"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/drawer_icon_width"
+            android:layout_height="@dimen/drawer_icon_height"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/drawer_head"
+            app:shapeAppearanceOverlay="@style/drawer_image_style"/>
 
         <TextView
             android:id="@+id/drawer_head"
@@ -30,8 +33,11 @@
             android:layout_height="wrap_content"
             android:text="@string/drawer_head"
             android:textSize="@dimen/text_size_20"
+            android:layout_marginTop="@dimen/margin_top_15"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/drawer_logo" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drawer_logo"
+            app:layout_constraintBottom_toTopOf="@+id/drawer_body"/>
 
         <TextView
             android:id="@+id/drawer_body"
@@ -39,7 +45,9 @@
             android:layout_height="wrap_content"
             android:text="@string/drawer_body"
             android:textSize="@dimen/text_size_15"
+            android:layout_marginTop="@dimen/margin_top_15"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/drawer_head" />
 
         <androidx.appcompat.widget.AppCompatImageView

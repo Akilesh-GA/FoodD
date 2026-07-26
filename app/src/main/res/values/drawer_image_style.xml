@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="drawer_image">
-        <item name="cornerFamily"/>
+    <style name="drawer_image_style">
+        <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
 </resources>

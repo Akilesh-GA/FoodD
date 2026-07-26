@@ -60,5 +60,9 @@
 
     <!-- Drawer -->
     <dimen name="drawer_radius">45dp</dimen>
+    <dimen name="drawer_icon_width">100dp</dimen>
+    <dimen name="drawer_icon_height">100dp</dimen>
+    <dimen name="drawer_layout_width">300dp</dimen>
+    <dimen name="margin_top_15">15dp</dimen>
 
 </resources>
