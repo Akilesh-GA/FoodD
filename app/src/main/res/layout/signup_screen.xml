@@ -26,10 +26,10 @@
         android:fontFamily="@font/open_sans_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/signup_name_field"
         app:layout_constraintTop_toBottomOf="@id/foodd_logo"
         app:layout_constraintBottom_toTopOf="@id/signup_sub_text"
-        android:layout_margin="@dimen/sign_up_text_margin"/>
+        android:layout_marginTop="@dimen/margin_top_20"/>
 
     <TextView
         android:id="@+id/signup_sub_text"
@@ -80,6 +80,7 @@
         android:id="@+id/signup_password_field"
         android:layout_width="@dimen/edit_text_width"
         android:layout_height="@dimen/edit_text_height"
+        android:autofillHints=""
         android:hint="@string/password_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,12 +112,25 @@
 
     <Button
         android:id="@+id/signup_button"
-        android:text="Sign Up"
+        android:text="@string/sign_up_text"
         android:layout_width="@dimen/sign_up_button_width"
         android:layout_height="@dimen/sign_up_button_height"
         app:layout_constraintStart_toStartOf="@+id/signup_c_password_field"
         app:layout_constraintEnd_toEndOf="@+id/signup_c_password_field"
         app:layout_constraintTop_toBottomOf="@+id/signup_c_password_field"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/goto_login"/>
+
+    <TextView
+        android:id="@+id/goto_login"
+        android:text="@string/goto_login"
+        android:fontFamily="@font/open_sans_regular"
+        android:textSize="@dimen/goto_login_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/sign_up_text_margin_bottom"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

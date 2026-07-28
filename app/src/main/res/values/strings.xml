@@ -60,10 +60,14 @@
     <string name="email_hint">Enter Email</string>
     <string name="password_hint">Enter Password</string>
     <string name="login_button_text">Login</string>
+    <string name="goto_sign_up">Do not have Account ? Sign Up</string>
+    <string name="logout">Log Out</string>
 
     <!-- Sign Up Page -->
     <string name="create_account_text">Create Account</string>
     <string name="sign_up_desc">Let\'s get you started with FoodD.</string>
     <string name="name_hint">Enter Name</string>
     <string name="confirm_password_hint">Enter Confirm Password</string>
+    <string name="goto_login">Already have Account ? Login</string>
+    <string name="sign_up_text">Sign Up</string>
 </resources>

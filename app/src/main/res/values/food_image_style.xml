@@ -3,5 +3,6 @@
     <style name="rounded_food_image">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+        <item name="color">?attr/colorSurface</item>
     </style>
 </resources>

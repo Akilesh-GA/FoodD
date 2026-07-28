@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "453231755266",
+    "project_id": "pitch-a693e",
+    "storage_bucket": "pitch-a693e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453231755266:android:03af9c05f16e94b17de71b",
+        "android_client_info": {
+          "package_name": "com.example.foodd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3QeRoP1cjfUhIanbXwkg26cfo7Inuyp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453231755266:android:69832a8f1a5811b57de71b",
+        "android_client_info": {
+          "package_name": "com.example.testapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3QeRoP1cjfUhIanbXwkg26cfo7Inuyp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
