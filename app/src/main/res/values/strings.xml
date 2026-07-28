@@ -53,4 +53,17 @@
     <string name="facebook">facebook</string>
     <string name="X">X</string>
     <string name="linkedin">linkedin</string>
+
+    <!-- Login Page -->
+    <string name="login_text">Welcome Back!</string>
+    <string name="login_desc">Log in to explore delicious meals.</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="login_button_text">Login</string>
+
+    <!-- Sign Up Page -->
+    <string name="create_account_text">Create Account</string>
+    <string name="sign_up_desc">Let\'s get you started with FoodD.</string>
+    <string name="name_hint">Enter Name</string>
+    <string name="confirm_password_hint">Enter Confirm Password</string>
 </resources>

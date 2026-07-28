@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
-    private List<FoodEntity> foods;
+    private final List<FoodEntity> foods;
 
     public FoodAdapter(List<FoodEntity> foods) {
         this.foods = foods;

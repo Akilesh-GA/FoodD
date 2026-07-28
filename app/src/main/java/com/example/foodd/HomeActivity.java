@@ -196,8 +196,22 @@ public class HomeActivity extends AppCompatActivity {
 
         restaurantsFull.add(new RestaurantEntity(R.drawable.restaurant_10, "Cafe Delight", "Coffee - Sandwiches - Desserts",
                 R.drawable.star, "4.8", R.drawable.truck, "₹50", R.drawable.clock, "15 min"));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RestaurantAdapter adapter = new RestaurantAdapter(restaurants);
         recyclerView.setAdapter(adapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String text) {
+                adapter.filterList(text);
+                return true;
+            }
+        });
     }
 }

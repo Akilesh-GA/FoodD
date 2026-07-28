@@ -15,8 +15,8 @@ import java.util.List;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
-    private List<RestaurantEntity> restaurants;
-    private List<RestaurantEntity> restaurantsFull;
+    private final List<RestaurantEntity> restaurants;
+    private final List<RestaurantEntity> restaurantsFull;
 
     public RestaurantAdapter(List<RestaurantEntity> restaurants) {
         this.restaurants = new ArrayList<>(restaurants);

@@ -12,8 +12,10 @@ import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity{
+
     LinearProgressIndicator progressIndicator;
     TextView splashText;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public class SplashActivity extends AppCompatActivity{
             @Override
             public void run() {
 
-                progress += 5;
+                progress += 10;
                 progressIndicator.setProgressCompat(progress, true);
 
                 if(progress < 100) {
