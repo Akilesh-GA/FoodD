@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -21,6 +22,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import androidx.annotation.Nullable;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+
 public class SignupActivity extends AppCompatActivity {
     EditText nameField;
     EditText emailField;
@@ -28,6 +38,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText confirmPasswordField;
     Button signUpButton;
     TextView gotoLoginText;
+    Button googleSignUp;
 
     private FirebaseAuth auth;
     private DatabaseReference db;
@@ -39,6 +50,9 @@ public class SignupActivity extends AppCompatActivity {
     String gotoLogin = "";
 
     SpannableString spannableText;
+
+    private GoogleSignInClient googleSignInClient;
+    private final int RC_SIGN_IN = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +70,7 @@ public class SignupActivity extends AppCompatActivity {
         gotoLoginText = findViewById(R.id.goto_login);
 
         signUpButton = findViewById(R.id.signup_button);
+        googleSignUp = findViewById(R.id.continue_with_google);
 
         gotoLogin = gotoLoginText.getText().toString().trim();
         spannableText = makeSpannableText(gotoLogin);
@@ -63,7 +78,26 @@ public class SignupActivity extends AppCompatActivity {
 
         gotoLoginText.setOnClickListener(view -> moveToLogIn());
 
+        continueWithGoogleSetUp();
+
+        googleSignUp.setOnClickListener(view -> continueWithGoogle());
+
         signUpButton.setOnClickListener(view -> registerUser());
+    }
+
+    private void continueWithGoogleSetUp() {
+        GoogleSignInOptions gso =
+                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+
+    private void continueWithGoogle() {
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     private void registerUser() {
@@ -139,5 +173,33 @@ public class SignupActivity extends AppCompatActivity {
         Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+
+            Task<GoogleSignInAccount> task =
+                    GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+
+                Toast.makeText(this,
+                        "Welcome " + account.getDisplayName(),
+                        Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
+            } catch (ApiException e) {
+                Toast.makeText(this,
+                        "Google Sign-In Failed: " + e.getStatusCode(),
+                        Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

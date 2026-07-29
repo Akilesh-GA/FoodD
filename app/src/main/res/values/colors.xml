@@ -24,4 +24,11 @@
 
     <color name="text_light">#212121</color>
     <color name="text_dark">#FFFFFF</color>
+
+    <color name="google_btn_light">#FFFFFFFF</color>
+    <color name="google_btn_text_dark">#000000</color>
+
+    <color name="google_btn_dark">#000000</color>
+    <color name="google_btn_text_light">#FFFFFFFF</color>
+
 </resources>

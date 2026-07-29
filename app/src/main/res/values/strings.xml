@@ -60,6 +60,7 @@
     <string name="email_hint">Enter Email</string>
     <string name="password_hint">Enter Password</string>
     <string name="login_button_text">Login</string>
+    <string name="guest_login_button_text">Login as Guest</string>
     <string name="goto_sign_up">Do not have Account ? Sign Up</string>
     <string name="logout">Log Out</string>
 
@@ -70,4 +71,6 @@
     <string name="confirm_password_hint">Enter Confirm Password</string>
     <string name="goto_login">Already have Account ? Login</string>
     <string name="sign_up_text">Sign Up</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="default_web_client_id">453231755266-mudkm0rhpd2qjtpptk94t6uvd2m25bib.apps.googleusercontent.com</string>
 </resources>

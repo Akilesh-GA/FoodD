@@ -1,15 +1,19 @@
 package com.example.foodd;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,13 +22,30 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+
 public class HomeActivity extends AppCompatActivity {
+
     String searchHint = "";
     String greetingText = "";
     String currTime = "";
@@ -36,12 +57,30 @@ public class HomeActivity extends AppCompatActivity {
     ImageView drawerIcon;
     ImageView closeIcon;
     DrawerLayout drawerLayout;
+    Button logOutButton;
+
+    List<RestaurantEntity> restaurants = new ArrayList<>();
+    List<RestaurantEntity> restaurantsFull = new ArrayList<>();
+
+    RestaurantAdapter restaurantAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_layout);
 
+        initViews();
+        setupDrawerToggle();
+        setupGreeting();
+        setupSearchView();
+        setupFoodList();
+        setupRestaurantLists();
+        setupRestaurantRecyclerView();
+        setupSearchListener();
+        logoutUser();
+    }
+
+    private void initViews() {
         foodRecyclerView = findViewById(R.id.food_recycler_view);
         recyclerView = findViewById(R.id.restaurant_recycler_view);
         searchView = findViewById(R.id.search_view);
@@ -49,16 +88,15 @@ public class HomeActivity extends AppCompatActivity {
         drawerIcon = findViewById(R.id.drawer_icon);
         drawerLayout = findViewById(R.id.drawer_layout);
         closeIcon = findViewById(R.id.close_icon);
+        logOutButton = findViewById(R.id.logout_button);
+    }
 
-        drawerIcon.setOnClickListener(view -> {
-            drawerLayout.openDrawer(GravityCompat.START);
-        });
+    private void setupDrawerToggle() {
+        drawerIcon.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+        closeIcon.setOnClickListener(view -> drawerLayout.closeDrawer(GravityCompat.START));
+    }
 
-        closeIcon.setOnClickListener(view -> {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        });
-
-
+    private void setupGreeting() {
         greetingText = greetingTextView.getText().toString().trim();
 
         currTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
@@ -66,11 +104,11 @@ public class HomeActivity extends AppCompatActivity {
         String[] time = currTime.split(":");
         int hours = Integer.parseInt(time[0]);
 
-        if(hours >= 5 && hours < 12) {
+        if (hours >= 5 && hours < 12) {
             greetingText = "Hey Akil, Good Morning!";
-        } else if(hours >= 12 && hours < 17) {
+        } else if (hours >= 12 && hours < 17) {
             greetingText = "Hey Akil, Good Afternoon!";
-        } else if(hours >= 17 && hours < 21) {
+        } else if (hours >= 17 && hours < 21) {
             greetingText = "Hey Akil, Good Evening!";
         } else {
             greetingText = "Hey Akil,Good Night!";
@@ -78,7 +116,7 @@ public class HomeActivity extends AppCompatActivity {
 
         SpannableString spannable = new SpannableString(greetingText);
 
-        int start = greetingText.indexOf("G");
+        int start = greetingText.indexOf("Good");
         int end = greetingText.length();
 
         spannable.setSpan(new StyleSpan(Typeface.BOLD),
@@ -87,15 +125,18 @@ public class HomeActivity extends AppCompatActivity {
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         spannable.setSpan(new ForegroundColorSpan(getColor(R.color.orange)),
-                        start,
-                        end,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         greetingTextView.setText(spannable);
+    }
 
+    @SuppressLint("RestrictedApi")
+    private void setupSearchView() {
         searchHint = getString(R.string.search_bar_hint).trim();
 
-        @SuppressLint("RestrictedApi") SearchView.SearchAutoComplete searchText =
+        SearchView.SearchAutoComplete searchText =
                 searchView.findViewById(androidx.appcompat.R.id.search_src_text);
 
         searchView.setIconifiedByDefault(false);
@@ -105,36 +146,28 @@ public class HomeActivity extends AppCompatActivity {
             searchText.setTextColor(ContextCompat.getColor(this, R.color.black));
             searchText.setHintTextColor(ContextCompat.getColor(this, R.color.mid_grey));
         }
+    }
 
+    private void setupFoodList() {
         List<FoodEntity> foods = new ArrayList<>();
 
         foods.add(new FoodEntity(R.drawable.trending, "Trending"));
-
         foods.add(new FoodEntity(R.drawable.food_8, "Hot Dog"));
-
         foods.add(new FoodEntity(R.drawable.food_1, "Burger"));
-
         foods.add(new FoodEntity(R.drawable.food_2, "Donut"));
-
         foods.add(new FoodEntity(R.drawable.food_3, "Taco Salad Bowl"));
-
         foods.add(new FoodEntity(R.drawable.food_4, "Taco"));
-
         foods.add(new FoodEntity(R.drawable.food_5, "Dhokla"));
-
         foods.add(new FoodEntity(R.drawable.food_6, "Biryani"));
-
         foods.add(new FoodEntity(R.drawable.food_7, "Pav Bhaji"));
-
         foods.add(new FoodEntity(R.drawable.food_9, "Sandwich"));
 
         foodRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         FoodAdapter foodAdapter = new FoodAdapter(foods);
         foodRecyclerView.setAdapter(foodAdapter);
+    }
 
-        List<RestaurantEntity> restaurants = new ArrayList<>();
-        List<RestaurantEntity> restaurantsFull = new ArrayList<>();
-
+    private void setupRestaurantLists() {
         restaurants.add(new RestaurantEntity(R.drawable.restaurant_1, "Spicy World", "Biryani - Tandoori - BBQ",
                 R.drawable.star, "3.9", R.drawable.truck, "₹50", R.drawable.clock, "32 min"));
 
@@ -166,7 +199,6 @@ public class HomeActivity extends AppCompatActivity {
                 R.drawable.star, "4.8", R.drawable.truck, "₹50", R.drawable.clock, "15 min"));
 
         // Restaurants Full
-
         restaurantsFull.add(new RestaurantEntity(R.drawable.restaurant_1, "Spicy World", "Biryani - Tandoori - BBQ",
                 R.drawable.star, "3.9", R.drawable.truck, "₹50", R.drawable.clock, "32 min"));
 
@@ -196,11 +228,15 @@ public class HomeActivity extends AppCompatActivity {
 
         restaurantsFull.add(new RestaurantEntity(R.drawable.restaurant_10, "Cafe Delight", "Coffee - Sandwiches - Desserts",
                 R.drawable.star, "4.8", R.drawable.truck, "₹50", R.drawable.clock, "15 min"));
+    }
 
+    private void setupRestaurantRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RestaurantAdapter adapter = new RestaurantAdapter(restaurants);
-        recyclerView.setAdapter(adapter);
+        restaurantAdapter = new RestaurantAdapter(restaurants);
+        recyclerView.setAdapter(restaurantAdapter);
+    }
 
+    private void setupSearchListener() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -209,9 +245,22 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String text) {
-                adapter.filterList(text);
+                restaurantAdapter.filterList(text);
                 return true;
             }
+        });
+    }
+
+    private void logoutUser() {
+        logOutButton.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+
+            Toast.makeText(HomeActivity.this, "Logout Successfully!", Toast.LENGTH_LONG).show();
         });
     }
 }

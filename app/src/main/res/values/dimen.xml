@@ -122,4 +122,15 @@
     <dimen name="goto_login_text_size">15sp</dimen>
     <dimen name="sign_up_text_margin_bottom">120dp</dimen>
 
+    <dimen name="sign_up_google_button_width">275dp</dimen>
+    <dimen name="sign_up_google_button_height">50dp</dimen>
+
+    <dimen name="google_sign_up_padding_start">20dp</dimen>
+    <dimen name="google_sign_up_padding_end">20dp</dimen>
+
+    <dimen name="margin_bottom_70">70dp</dimen>
+    <dimen name="margin_bottom_100">100dp</dimen>
+    <dimen name="margin_bottom_150">150dp</dimen>
+    <dimen name="google_draw_padding">10dp</dimen>
+
 </resources>

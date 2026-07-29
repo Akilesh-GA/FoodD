@@ -115,8 +115,8 @@
         android:text="@string/sign_up_text"
         android:layout_width="@dimen/sign_up_button_width"
         android:layout_height="@dimen/sign_up_button_height"
-        app:layout_constraintStart_toStartOf="@+id/signup_c_password_field"
-        app:layout_constraintEnd_toEndOf="@+id/signup_c_password_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_c_password_field"
         app:layout_constraintBottom_toTopOf="@id/goto_login"/>
 
@@ -130,7 +130,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signup_button"
+        app:layout_constraintBottom_toTopOf="@id/continue_with_google" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continue_with_google"
+        android:text="@string/continue_with_google"
+        android:layout_width="@dimen/sign_up_google_button_width"
+        android:layout_height="@dimen/sign_up_google_button_height"
+        android:background="@drawable/google_sign_up"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:drawablePadding="@dimen/google_draw_padding"
+        android:drawableStart="@drawable/google"
+        android:paddingStart="@dimen/google_sign_up_padding_start"
+        android:paddingEnd="@dimen/google_sign_up_padding_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goto_login"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/sign_up_text_margin_bottom"/>
+        android:layout_marginBottom="@dimen/margin_bottom_70" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
