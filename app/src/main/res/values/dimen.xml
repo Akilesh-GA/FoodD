@@ -99,6 +99,7 @@
     <dimen name="goto_sign_up_text_size">15sp</dimen>
     <dimen name="goto_sign_up_margin_bottom">100dp</dimen>
     <dimen name="logout_button_margin_bottom">40dp</dimen>
+    <dimen name="draw_padding">10dp</dimen>
 
     <!-- Edit Text -->
     <dimen name="edit_text_width">300dp</dimen>
@@ -132,5 +133,13 @@
     <dimen name="margin_bottom_100">100dp</dimen>
     <dimen name="margin_bottom_150">150dp</dimen>
     <dimen name="google_draw_padding">10dp</dimen>
+
+    <!-- User Profile -->
+    <dimen name="profile_image_width">150dp</dimen>
+    <dimen name="profile_image_height">150dp</dimen>
+    <dimen name="margin_top_100">100dp</dimen>
+    <dimen name="margin_top_50">50dp</dimen>
+    <dimen name="margin_start_50">50dp</dimen>
+    <dimen name="margin_end_40">40dp</dimen>
 
 </resources>

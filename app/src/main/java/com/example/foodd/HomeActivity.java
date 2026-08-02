@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -21,12 +20,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
@@ -34,15 +27,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import androidx.annotation.Nullable;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -58,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageView closeIcon;
     DrawerLayout drawerLayout;
     Button logOutButton;
+    ImageView userProfileImage;
 
     List<RestaurantEntity> restaurants = new ArrayList<>();
     List<RestaurantEntity> restaurantsFull = new ArrayList<>();
@@ -71,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
 
         initViews();
         setupDrawerToggle();
+        userProfilePage();
         setupGreeting();
         setupSearchView();
         setupFoodList();
@@ -89,11 +75,20 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         closeIcon = findViewById(R.id.close_icon);
         logOutButton = findViewById(R.id.logout_button);
+        userProfileImage = findViewById(R.id.drawer_logo);
     }
 
     private void setupDrawerToggle() {
         drawerIcon.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
         closeIcon.setOnClickListener(view -> drawerLayout.closeDrawer(GravityCompat.START));
+    }
+
+    private void userProfilePage() {
+        userProfileImage.setOnClickListener(view -> {
+            Intent intent = new Intent(HomeActivity.this, UserProfile.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void setupGreeting() {

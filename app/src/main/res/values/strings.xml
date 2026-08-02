@@ -72,5 +72,15 @@
     <string name="goto_login">Already have Account ? Login</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="continue_with_google">Continue with Google</string>
+    <string name="sign_in_with_google">Sign In with Google</string>
     <string name="default_web_client_id">453231755266-mudkm0rhpd2qjtpptk94t6uvd2m25bib.apps.googleusercontent.com</string>
+
+    <!-- User Profile -->
+    <string name="profile_text">Profile</string>
+    <string name="user_name">user_name</string>
+    <string name="user_email">user_email</string>
+    <string name="user_mobile">user_mobile</string>
+    <string name="user_gender">user_gender</string>
+    <string name="delete_account_text">Delete Account</string>
+    <string name="disable_account_text">Disable Account</string>
 </resources>
