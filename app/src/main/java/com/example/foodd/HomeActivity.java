@@ -11,7 +11,7 @@ import android.text.style.StyleSpan;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +49,8 @@ public class HomeActivity extends AppCompatActivity {
 
     RestaurantAdapter restaurantAdapter;
 
+    private GoogleSignInClient googleSignInClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         setupRestaurantLists();
         setupRestaurantRecyclerView();
         setupSearchListener();
-        logoutUser();
+        setUpLogOutButton();
     }
 
     private void initViews() {
@@ -85,7 +87,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void userProfilePage() {
         userProfileImage.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeActivity.this, UserProfile.class);
+            Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
             startActivity(intent);
             finish();
         });
@@ -246,16 +248,19 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void logoutUser() {
+    private void setUpLogOutButton() {
         logOutButton.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
+
+            if(googleSignInClient != null) {
+                googleSignInClient.signOut();
+            }
 
             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
 
-            Toast.makeText(HomeActivity.this, "Logout Successfully!", Toast.LENGTH_LONG).show();
         });
     }
 }

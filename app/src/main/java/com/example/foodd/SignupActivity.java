@@ -107,15 +107,15 @@ public class SignupActivity extends AppCompatActivity {
         confirmPassword = confirmPasswordField.getText().toString().trim();
 
         if(name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            Toast.makeText(this, "Enter Values", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Enter Values", Toast.LENGTH_SHORT).show();
             return;
         }
         if(password.length() < 6) {
-            Toast.makeText(this, "password must be at least 6 characters long", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
             return;
         }
         if(!password.equals(confirmPassword)) {
-            Toast.makeText(this, "Password do not match", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Password do not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -170,8 +170,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void moveToLogIn() {
-        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
         finish();
     }
 
@@ -189,10 +188,9 @@ public class SignupActivity extends AppCompatActivity {
 
                 Toast.makeText(this,
                         "Welcome " + account.getDisplayName(),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                 finish();
 
             } catch (ApiException e) {

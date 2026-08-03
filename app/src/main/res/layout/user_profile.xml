@@ -20,18 +20,18 @@
         app:layout_constraintBottom_toTopOf="@id/profile_image"
         app:layout_constraintEnd_toStartOf="@id/profile_image"/>
 
-    <TextView
-        android:id="@+id/edit_icon"
-        android:layout_width="@dimen/width_50"
-        android:layout_height="@dimen/height_50"
-        app:srcCompat="@drawable/edit_icon" />
+<!--    <TextView-->
+<!--        android:id="@+id/edit_icon"-->
+<!--        android:layout_width="@dimen/width_50"-->
+<!--        android:layout_height="@dimen/height_50"-->
+<!--        app:srcCompat="@drawable/edit_icon" />-->
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image"
         android:layout_width="@dimen/profile_image_width"
         android:layout_height="@dimen/profile_image_height"
         app:srcCompat="@drawable/user"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/user_data_layout"

@@ -24,6 +24,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
     FirebaseAuth auth;
@@ -32,12 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     TextView gotoSignUpText;
     Button googleLogin;
-
     String email;
     String password;
     String gotoSignUp;
-
-    boolean isSignUpSuccess;
 
     SpannableString spannableText;
 
@@ -45,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private final int RC_SIGN_IN = 100;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
@@ -59,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         continueWithGoogleSetUp();
 
-        googleLogin.setOnClickListener(view -> continueWithGoogle() );
+        googleLogin.setOnClickListener(view -> continueWithGoogle());
 
         spannableText = makeSpannableText(gotoSignUpText);
 
@@ -91,18 +90,16 @@ public class LoginActivity extends AppCompatActivity {
         email = emailField.getText().toString().trim();
         password = passwordField.getText().toString().trim();
 
-        if(email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(LoginActivity.this, "Enter Values", Toast.LENGTH_LONG).show();
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Enter Email or Password", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task ->{
-            if(task.isSuccessful()) {
-                Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_LONG).show();
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
                 moveToHome();
                 return;
-            }
-            else {
+            } else {
                 String err = (task.getException() != null) ? task.getException().getMessage() : "Authentication Failed!";
                 Toast.makeText(LoginActivity.this, err, Toast.LENGTH_LONG).show();
                 return;
@@ -150,8 +147,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void isSignUpSuccess() {
         boolean successMessage = getIntent().getBooleanExtra("signup_success", false);
-        if(successMessage) {
-            Toast.makeText(this, "Account created Successfully!", Toast.LENGTH_LONG).show();
+        if (successMessage) {
+            Toast.makeText(this, "Account created Successfully!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -166,20 +163,41 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account.getIdToken());
 
                 Toast.makeText(this,
                         "Welcome " + account.getDisplayName(),
-                        Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                        Toast.LENGTH_SHORT).show();
 
             } catch (ApiException e) {
                 Toast.makeText(this,
                         "Google Sign-In Failed: " + e.getStatusCode(),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+
+        AuthCredential credential =
+                GoogleAuthProvider.getCredential(idToken, null);
+
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+
+                    if (task.isSuccessful()) {
+
+                        startActivity(new Intent(this,
+                                HomeActivity.class));
+                        finish();
+
+                    } else {
+
+                        Toast.makeText(this,
+                                task.getException().getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                });
     }
 }
