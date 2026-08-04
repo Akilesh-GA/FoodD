@@ -62,7 +62,7 @@ FoodD is a production-ready Android application that provides a seamless food de
 ## Workflow Screenshots
 
 ### Splash Screen
-![Splash Screen](./assets/screenshots/splash_screen.jpeg)
+![Splash Screen](./assets/screenshots/splash_screen.png)
 
 ### Login Screen
 ![Login Screen](./assets/screenshots/login_activity.png)
@@ -75,6 +75,9 @@ FoodD is a production-ready Android application that provides a seamless food de
 
 ### Menu Screen
 ![Menu Screen](./assets/screenshots/drawer_activity.png)
+
+### Firebase
+![Firebase](./assets/screenshots/firebase.png)
 
 ---
 
