@@ -59,6 +59,25 @@ FoodD is a production-ready Android application that provides a seamless food de
 
 ---
 
+## Workflow Screenshots
+
+### Splash Screen
+![Splash Screen](./assets/screenshots/splash_screen.jpeg)
+
+### Login Screen
+![Login Screen](./assets/screenshots/login_activity.png)
+
+### Sign In Screen
+![Sign In Screen](./assets/screenshots/sign_up_activity.png)
+
+### Home Screen
+![Home Screen](./assets/screenshots/home_activity.png)
+
+### Menu Screen
+![Menu Screen](./assets/screenshots/drawer_activity.png)
+
+---
+
 ## Architecture
 
 ### MVVM Architecture Pattern
@@ -99,137 +118,6 @@ FoodD is a production-ready Android application that provides a seamless food de
 │  - Local Room Database                          │
 └─────────────────────────────────────────────────┘
 ```
-
-### Application Flow Diagram
-
-```
-App Launch
-    │
-    ▼
-Splash Screen
-    │
-    ├─ Check Firebase Auth Status
-    │
-    ├─ If Logged In ──→ Main Activity
-    │                      │
-    │                      ├─ Home Fragment (Restaurants)
-    │                      ├─ Search Fragment
-    │                      ├─ Orders Fragment
-    │                      ├─ Cart Fragment
-    │                      └─ Profile Fragment
-    │
-    └─ If Not Logged In ──→ Auth Activity
-                               │
-                               ├─ Login Screen
-                               ├─ Signup Screen
-                               └─ Firebase Authentication
-
-User Actions
-    │
-    ├─ Browse Restaurants → RecyclerView Adapter
-    ├─ View Food Items → DetailActivity
-    ├─ Add to Cart → ViewModel + LiveData
-    ├─ Checkout → Payment Integration
-    ├─ Track Order → Real-time Listener
-    └─ Manage Profile → Firestore Update
-```
-
----
-
-## Project Structure
-
-```
-FoodD/
-├── .idea/                              (Android Studio config)
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/example/foodd/
-│   │   │   │   ├── Activities/
-│   │   │   │   │   ├── SplashActivity.java
-│   │   │   │   │   ├── LoginActivity.java
-│   │   │   │   │   ├── SignupActivity.java
-│   │   │   │   │   ├── MainActivity.java
-│   │   │   │   │   └── DetailActivity.java
-│   │   │   │   ├── Fragments/
-│   │   │   │   │   ├── HomeFragment.java
-│   │   │   │   │   ├── SearchFragment.java
-│   │   │   │   │   ├── OrdersFragment.java
-│   │   │   │   │   ├── CartFragment.java
-│   │   │   │   │   └── ProfileFragment.java
-│   │   │   │   ├── Adapters/
-│   │   │   │   │   ├── RestaurantAdapter.java
-│   │   │   │   │   ├── FoodItemAdapter.java
-│   │   │   │   │   └── OrderAdapter.java
-│   │   │   │   ├── ViewModels/
-│   │   │   │   │   ├── RestaurantViewModel.java
-│   │   │   │   │   ├── CartViewModel.java
-│   │   │   │   │   └── UserViewModel.java
-│   │   │   │   ├── Models/
-│   │   │   │   │   ├── Restaurant.java
-│   │   │   │   │   ├── FoodItem.java
-│   │   │   │   │   ├── Order.java
-│   │   │   │   │   ├── Cart.java
-│   │   │   │   │   └── User.java
-│   │   │   │   ├── Repository/
-│   │   │   │   │   ├── RestaurantRepository.java
-│   │   │   │   │   ├── OrderRepository.java
-│   │   │   │   │   └── UserRepository.java
-│   │   │   │   ├── Database/
-│   │   │   │   │   ├── AppDatabase.java (Room)
-│   │   │   │   │   ├── CartDao.java
-│   │   │   │   │   └── OrderDao.java
-│   │   │   │   ├── Utils/
-│   │   │   │   │   ├── FirebaseHelper.java
-│   │   │   │   │   ├── Constants.java
-│   │   │   │   │   └── SharedPrefHelper.java
-│   │   │   │   ├── Services/
-│   │   │   │   │   └── LocationService.java
-│   │   │   │   └── FoodDApplication.java
-│   │   │   ├── res/
-│   │   │   │   ├── layout/
-│   │   │   │   │   ├── activity_main.xml
-│   │   │   │   │   ├── activity_login.xml
-│   │   │   │   │   ├── activity_detail.xml
-│   │   │   │   │   ├── fragment_home.xml
-│   │   │   │   │   ├── fragment_cart.xml
-│   │   │   │   │   ├── item_restaurant.xml
-│   │   │   │   │   └── item_food.xml
-│   │   │   │   ├── drawable/
-│   │   │   │   │   ├── ic_home.xml
-│   │   │   │   │   ├── ic_search.xml
-│   │   │   │   │   ├── ic_orders.xml
-│   │   │   │   │   ├── ic_cart.xml
-│   │   │   │   │   └── ic_profile.xml
-│   │   │   │   ├── values/
-│   │   │   │   │   ├── colors.xml
-│   │   │   │   │   ├── strings.xml
-│   │   │   │   │   ├── dimens.xml
-│   │   │   │   │   └── styles.xml
-│   │   │   │   ├── menu/
-│   │   │   │   │   └── bottom_nav_menu.xml
-│   │   │   │   └── mipmap/
-│   │   │   │       └── ic_launcher.png
-│   │   │   └── AndroidManifest.xml
-│   │   ├── test/
-│   │   │   └── java/                   (Unit tests)
-│   │   └── androidTest/
-│   │       └── java/                   (Instrumented tests)
-│   ├── build.gradle                    (App-level configuration)
-│   └── proguard-rules.pro              (Code obfuscation)
-├── gradle/
-│   └── wrapper/
-│       ├── gradle-wrapper.jar
-│       └── gradle-wrapper.properties
-├── build.gradle                        (Project-level configuration)
-├── settings.gradle
-├── gradlew                             (Gradle wrapper for Linux/Mac)
-├── gradlew.bat                         (Gradle wrapper for Windows)
-├── .gitignore
-├── .gitattributes
-└── README.md                           (This file)
-```
-
 ---
 
 ## Getting Started
