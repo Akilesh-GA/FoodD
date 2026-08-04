@@ -142,4 +142,7 @@
     <dimen name="margin_start_50">50dp</dimen>
     <dimen name="margin_end_40">40dp</dimen>
 
+    <!-- API -->
+    <dimen name="height_0">0dp</dimen>
+
 </resources>

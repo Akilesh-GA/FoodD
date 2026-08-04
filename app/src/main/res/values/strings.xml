@@ -83,4 +83,12 @@
     <string name="user_gender">user_gender</string>
     <string name="delete_account_text">Delete Account</string>
     <string name="disable_account_text">Disable Account</string>
+
+    <!-- Retrofit API -->
+    <string name="food_api_name">Food Name</string>
+    <string name="food_api_price">Food Price</string>
+    <string name="food_api_category">Food Category</string>
+    <string name="food_api_availability">Food Availability</string>
+    <string name="fetch_data">Fetch Data</string>
+
 </resources>

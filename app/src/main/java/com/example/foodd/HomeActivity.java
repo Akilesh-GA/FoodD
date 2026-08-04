@@ -11,6 +11,8 @@ import android.text.style.StyleSpan;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.foodd.FoodEntity;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import androidx.appcompat.widget.SearchView;
