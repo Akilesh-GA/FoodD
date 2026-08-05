@@ -1,4 +1,4 @@
-package com.example.foodd;
+package com.example.foodd.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodd.network.FoodAPI;
-import com.example.foodd.network.FoodAPIEntity;
-import com.example.foodd.network.RetrofitClient;
+import com.example.foodd.adapters.FoodAPIAdapter;
+import com.example.foodd.R;
+import com.example.foodd.api.FoodAPI;
+import com.example.foodd.api.FoodAPIEntity;
+import com.example.foodd.api.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;

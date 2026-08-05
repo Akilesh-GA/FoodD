@@ -1,4 +1,4 @@
-package com.example.foodd;
+package com.example.foodd.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.foodd.R;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 @SuppressLint("CustomSplashScreen")

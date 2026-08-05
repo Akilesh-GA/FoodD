@@ -90,5 +90,6 @@
     <string name="food_api_category">Food Category</string>
     <string name="food_api_availability">Food Availability</string>
     <string name="fetch_data">Fetch Data</string>
+    <string name="api_text">Retrofit Test</string>
 
 </resources>

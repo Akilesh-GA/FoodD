@@ -1,4 +1,4 @@
-package com.example.foodd;
+package com.example.foodd.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,7 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.foodd.FoodEntity;
+import com.example.foodd.adapters.FoodAdapter;
+import com.example.foodd.models.FoodEntity;
+import com.example.foodd.R;
+import com.example.foodd.adapters.RestaurantAdapter;
+import com.example.foodd.models.RestaurantEntity;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import androidx.appcompat.widget.SearchView;

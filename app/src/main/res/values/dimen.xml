@@ -144,5 +144,11 @@
 
     <!-- API -->
     <dimen name="height_0">0dp</dimen>
-
+    <dimen name="padding_start_25">25dp</dimen>
+    <dimen name="padding_end_25">25dp</dimen>
+    <dimen name="margin_top_10">10dp</dimen>
+    <dimen name="margin_bottom_25">25dp</dimen>
+    <dimen name="text_size_30">30dp</dimen>
+    <dimen name="layout_padding_30">30dp</dimen>
+    <dimen name="draw_padding_10">10dp</dimen>
 </resources>

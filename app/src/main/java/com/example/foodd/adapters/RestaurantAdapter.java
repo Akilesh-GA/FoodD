@@ -1,4 +1,4 @@
-package com.example.foodd;
+package com.example.foodd.adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.foodd.R;
+import com.example.foodd.models.RestaurantEntity;
 
 import java.util.ArrayList;
 import java.util.List;

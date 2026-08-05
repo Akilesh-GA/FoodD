@@ -1,4 +1,4 @@
-package com.example.foodd;
+package com.example.foodd.models;
 
 public class UserEntity {
     private String name;

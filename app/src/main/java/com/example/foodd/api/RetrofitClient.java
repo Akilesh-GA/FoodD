@@ -1,6 +1,6 @@
-package com.example.foodd.network;
+package com.example.foodd.api;
 
-import com.example.foodd.Constants;
+import com.example.foodd.utils.Constants;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

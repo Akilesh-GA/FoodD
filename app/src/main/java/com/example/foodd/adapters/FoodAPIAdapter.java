@@ -1,4 +1,4 @@
-package com.example.foodd;
+package com.example.foodd.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodd.network.FoodAPIEntity;
+import com.example.foodd.R;
+import com.example.foodd.api.FoodAPIEntity;
 
 import java.util.List;
 
@@ -37,9 +38,13 @@ public class FoodAPIAdapter extends RecyclerView.Adapter<FoodAPIAdapter.FoodAPIH
     public void onBindViewHolder(@NonNull FoodAPIHolder holder, int position) {
         FoodAPIEntity food = foods.get(position);
 
-        holder.Id.setText(String.valueOf(food.getId()));
-        holder.Name.setText(food.getName());
-        holder.Price.setText(String.valueOf(food.getPrice()));
+        String id = String.valueOf(food.getId());
+        String foodName = food.getName();
+        String price = String.valueOf(food.getPrice());
+
+        holder.Id.setText(id);
+        holder.Name.setText(foodName);
+        holder.Price.setText(price);
     }
 
     @Override

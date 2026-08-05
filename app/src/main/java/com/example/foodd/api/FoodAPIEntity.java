@@ -1,4 +1,4 @@
-package com.example.foodd.network;
+package com.example.foodd.api;
 
 public class FoodAPIEntity {
     private int id;
