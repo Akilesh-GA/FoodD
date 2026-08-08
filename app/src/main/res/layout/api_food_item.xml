@@ -7,7 +7,7 @@
     android:padding="@dimen/layout_padding_20">
 
     <TextView
-        android:id="@+id/ID"
+        android:id="@+id/user_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_20"
@@ -16,7 +16,17 @@
         android:drawablePadding="@dimen/draw_padding_10"/>
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_20"
+        android:layout_marginTop="@dimen/margin_top_10"
+        app:drawableStartCompat="@drawable/id_icon"
+        android:drawablePadding="@dimen/draw_padding_10"/>
+
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_20"
@@ -25,7 +35,7 @@
         android:drawablePadding="@dimen/draw_padding_10"/>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/is_completed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_20"

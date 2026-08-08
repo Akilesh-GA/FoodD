@@ -11,7 +11,7 @@ public class RestaurantEntity {
     private int timeIcon;
     private String time;
 
-    RestaurantEntity(int restaurantImage, String restaurantName, String restaurantMenu, int ratingIcon,
+    public RestaurantEntity(int restaurantImage, String restaurantName, String restaurantMenu, int ratingIcon,
                      String rating, int deliveryIcon, String deliveryCharge, int timeIcon, String time) {
         this.restaurantImage = restaurantImage;
         this.restaurantName = restaurantName;

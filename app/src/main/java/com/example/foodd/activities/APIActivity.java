@@ -1,7 +1,6 @@
 package com.example.foodd.activities;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -9,14 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodd.adapters.FoodAPIAdapter;
+import com.example.foodd.adapters.TestAPIAdapter;
 import com.example.foodd.R;
-import com.example.foodd.api.FoodAPI;
-import com.example.foodd.api.FoodAPIEntity;
 import com.example.foodd.api.RetrofitClient;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.foodd.api_test.TestAPI;
+import com.example.foodd.api_test.TestAPIModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +21,7 @@ import retrofit2.Response;
 public class APIActivity extends AppCompatActivity {
     Button FetchData;
     private RecyclerView recyclerView;
-    private FoodAPIAdapter adapter;
+    private TestAPIAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceSate) {
@@ -43,7 +39,7 @@ public class APIActivity extends AppCompatActivity {
     }
 
     private void adapterSetup() {
-        adapter = new FoodAPIAdapter(new ArrayList<>());
+        adapter = new TestAPIAdapter(new TestAPIModel());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -53,20 +49,19 @@ public class APIActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
-        FoodAPI foodAPI = RetrofitClient.getInstance().create(FoodAPI.class);
+        TestAPI testAPI = RetrofitClient.getInstance().create(TestAPI.class);
 
-        foodAPI.getFoods().enqueue(new Callback<List<FoodAPIEntity>>() {
+        testAPI.getTestData().enqueue(new Callback<TestAPIModel>() {
             @Override
-            public void onResponse(Call<List<FoodAPIEntity>> call, Response<List<FoodAPIEntity>> response) {
-                Log.d("API", "Code: " + response.code());
+            public void onResponse(Call<TestAPIModel> call, Response<TestAPIModel> response) {
                 if(response.isSuccessful() && response.body() != null) {
-                    List<FoodAPIEntity> food = response.body();
-                    adapter.setFoods(food);
+                    TestAPIModel res = response.body();
+                    adapter.setAPIData(res);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<FoodAPIEntity>> call, Throwable t) {
+            public void onFailure(Call<TestAPIModel> call, Throwable t) {
                 Toast.makeText(APIActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });

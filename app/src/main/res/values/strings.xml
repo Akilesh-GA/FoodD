@@ -92,4 +92,13 @@
     <string name="fetch_data">Fetch Data</string>
     <string name="api_text">Retrofit Test</string>
 
+    <!-- Broadcast Receiver -->
+    <string name="broadcast_text">Broadcast Receiver Test</string>
+    <string name="airplane_mode">Airplane Mode</string>
+
+
+    <!-- Notification -->
+    <string name="notification_button">Notify</string>
+    <string name="notification_text">Hello Android!</string>
+
 </resources>

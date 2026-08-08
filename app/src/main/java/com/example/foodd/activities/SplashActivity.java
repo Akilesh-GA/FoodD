@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.foodd.R;
+import com.example.foodd.broadcast_receiver.BroadcastReceiverMain;
+import com.example.foodd.notification.NotificationActivity;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 @SuppressLint("CustomSplashScreen")
@@ -52,7 +54,7 @@ public class SplashActivity extends AppCompatActivity{
                     handler.postDelayed(this, 500);
 
                 } else {
-                    startActivity(new Intent(SplashActivity.this, APIActivity.class));
+                    startActivity(new Intent(SplashActivity.this, NotificationActivity.class));
                     finish();
                 }
             }

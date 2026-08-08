@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/broadcast_text"
+        android:text="@string/broadcast_text"
+        android:fontFamily="@font/open_sans_bold_italic"
+        android:textSize="@dimen/text_size_30"
+        android:padding="@dimen/layout_padding_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="SpUsage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_top_60"
+        android:layout_marginStart="@dimen/margin_start_25"/>
+
+    <TextView
+        android:id="@+id/airplane_mode"
+        android:text="@string/airplane_mode"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:textSize="@dimen/text_size_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/broadcast_text"
+        app:layout_constraintTop_toBottomOf="@id/broadcast_text"
+        android:padding="@dimen/layout_padding_10"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
